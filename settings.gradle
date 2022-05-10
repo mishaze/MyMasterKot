@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "MyMaster"
+include ':data'
+include ':domain'
