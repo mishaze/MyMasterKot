@@ -60,7 +60,10 @@ class MyProfile : AppCompatActivity() {
 
         vm.resultLive.observe(this, Observer {
             firstName.setText(it?.name)
-
+            secondName.setText(it?.surname)
+            phone.setText(it?.phone_number)
+            email.setText(it?.email)
+            info.setText(it?.master_info)
         })
 
         vm.load()

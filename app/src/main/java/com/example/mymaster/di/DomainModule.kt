@@ -34,5 +34,17 @@ val domainModule = module {
     factory<SetUserServicesListUseCase> {
         SetUserServicesListUseCase(get())
     }
+    //Schedule
+    factory<GetScheduleListUseCase> {
+        GetScheduleListUseCase(get())
+    }
+    //ScheduleSetting
+    factory<GetUserScheduleSettingUseCase> {
+        GetUserScheduleSettingUseCase(get())
+    }
+
+    factory<SetUserScheduleSettingUseCase> {
+        SetUserScheduleSettingUseCase(get())
+    }
 
 }

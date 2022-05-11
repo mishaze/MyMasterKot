@@ -1,6 +1,6 @@
 package com.example.domain.Domain.models
 
-class UserInformation(
+data class UserInformation(
     var uid: String? = "",
     var name: String? = "",
     var surname: String? = "",
@@ -9,6 +9,4 @@ class UserInformation(
     var legal_information: String? = "",
     var email: String? = "",
     var master_info: String? = ""
-) {
-
-}
+)

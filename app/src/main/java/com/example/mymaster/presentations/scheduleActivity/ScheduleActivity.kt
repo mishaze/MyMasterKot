@@ -69,7 +69,7 @@ class ScheduleActivity : AppCompatActivity() {
             addRecyclerview()
         })
 
-        vm.getFriendList()
+        vm.getScheduleList()
 
     }
 

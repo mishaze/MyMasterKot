@@ -1,5 +1,6 @@
 package com.example.mymaster.presentations.servicesListActivity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -20,7 +21,7 @@ import kotlin.collections.ArrayList
 
 class ServicesListActivity : AppCompatActivity() {
     private var items: ArrayList<ServicesModel> = ArrayList()
-    private val adapter: RecyclerView.Adapter<*> = ServicesAdapter(items)
+    private var adapter: RecyclerView.Adapter<*> = ServicesAdapter(items)
     private val services: ArrayList<ServicesModel> = ArrayList()
 
     private val vm by viewModel<ServiceListActivityViewModel>()
@@ -42,6 +43,7 @@ class ServicesListActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_list)
@@ -56,6 +58,7 @@ class ServicesListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
+
         fab.setOnClickListener(View.OnClickListener {
             if (items.size > 14) return@OnClickListener
             items.add(ServicesModel())
@@ -63,7 +66,11 @@ class ServicesListActivity : AppCompatActivity() {
         })
 
         vm.resultLive.observe(this, {
-            items = it
+            items.clear()
+            adapter.notifyDataSetChanged()
+            it.forEach { i ->
+                items.add(i)
+            }
             adapter.notifyItemInserted(items.size - 1)
         })
 
@@ -73,12 +80,14 @@ class ServicesListActivity : AppCompatActivity() {
             setServices()
             vm.save(services)
             services.clear()
+            adapter.notifyDataSetChanged()
         })
 
 
     }
 
     private fun setServices() {
+
         for (i in items.indices) {
             if (names[i].text.toString() == "" && times[i].text.toString() == "") continue
 
@@ -86,7 +95,10 @@ class ServicesListActivity : AppCompatActivity() {
                 ServicesModel(
                     name = names[i].text.toString(),
                     price = prices[i].text.toString(),
-                    timeInWork = times[i].text.toString()
+                    timeInWork = times[i].text.toString(),
+                    info = "",
+                    status = true,
+                    uidServices = items[i].uidServices
                 )
             )
         }

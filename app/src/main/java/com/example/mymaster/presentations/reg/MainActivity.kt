@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.domain.Domain.models.UserInformation
+import com.example.domain.Domain.models.*
 import com.example.mymaster.presentations.mainMenu.MainMenu
 import com.example.mymaster.R
 import com.google.android.material.snackbar.Snackbar
@@ -121,24 +121,106 @@ class MainActivity : AppCompatActivity() {
 
             auth.createUserWithEmailAndPassword(email.text.toString(), pass.text.toString())
                 .addOnSuccessListener {
-                    val user = UserInformation()
-                    user.email = email.text.toString()
-                    user.name = name.text.toString()
-                    user.uid = FirebaseAuth.getInstance().uid
-                    //add in DataBase
-                    masters.child(FirebaseAuth.getInstance().currentUser!!.uid)
-                        .setValue(user)
-                        .addOnSuccessListener {
-                            Snackbar.make(
-                                root,
-                                "Успешная регистрация",
-                                Snackbar.LENGTH_SHORT
-                            ).show()
+                    val userInformation = UserInformation(
+                        uid = FirebaseAuth.getInstance().currentUser!!.uid,
+                        name = name.text.toString(),
+                        surname = "Петров",
+                        phone_number = "+79507352828",
+                        specialization = "Мастер по маникюру",
+                        legal_information = "ИНН:5444564115155514",
+                        email = email.text.toString(),
+                        master_info = "Занимаюсь маникюром и все что с этим связано"
+                    )
+                    userInformation.email = email.text.toString()
+                    userInformation.name = name.text.toString()
+                    userInformation.uid = FirebaseAuth.getInstance().uid
 
-                            auth.signInWithEmailAndPassword(user.email!!, pass.text.toString())
+
+                    val temp1: ArrayList<DayWeek> = ArrayList()
+
+                    temp1.add(
+                        DayWeek(
+                            monday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            tuesday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            wednesday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            thursday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            friday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            sunday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            saturday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            )
+                        )
+                    )
+
+                    val scheduleSetting =
+                        ScheduleSettingModel(time = "01:50", num = 1, dayOfWeek = temp1)
+                    val servicesModel = ServicesModel(
+                        name = "Маникюр",
+                        price = "1000",
+                        timeInWork = "120",
+                        info = "Ноготочки делаю я тут вот так вот",
+                        uidServices = "",
+                        status = true
+                    )
+
+                    //add in DataBase
+
+                    masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Schedule")
+                        .setValue(scheduleSetting)
+
+                    val key = masters.child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .child("Services").push().key
+                    servicesModel.uidServices = key
+
+                    masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Services")
+                        .child(key.toString()).setValue(servicesModel)
+
+                    masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Information")
+                        .setValue(userInformation)
+                        .addOnSuccessListener {
+
+                            auth.signInWithEmailAndPassword(
+                                userInformation.email!!,
+                                pass.text.toString()
+                            )
                                 .addOnSuccessListener {
-                                    startActivity(Intent(
-                                        this@MainActivity, MainMenu::class.java)
+                                    startActivity(
+                                        Intent(
+                                            this@MainActivity, MainMenu::class.java
+                                        )
                                     )
                                     finish()
                                 }.addOnFailureListener { e ->

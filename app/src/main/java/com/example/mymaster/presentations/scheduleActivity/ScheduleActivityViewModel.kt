@@ -14,7 +14,7 @@ class ScheduleActivityViewModel (
     private var resultLiveMutable = MutableLiveData <ArrayList<RecordingSessionModel>>()
     val resultLive: MutableLiveData<ArrayList<RecordingSessionModel>> = resultLiveMutable
 
-    fun getFriendList() {
+    fun getScheduleList() {
         getUserScheduleListUSeCase.execute(object : FirebaseCallback<ResponseScheduleList> {
             override fun onResponse(response: ResponseScheduleList) {
                 resultLiveMutable.value = response.answer

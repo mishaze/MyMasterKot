@@ -5,6 +5,8 @@ import com.example.mymaster.presentations.addFriendActivity.AddFriendActivityVie
 import com.example.mymaster.presentations.friendActivity.FriendActivity
 import com.example.mymaster.presentations.friendActivity.FriendActivityViewModel
 import com.example.mymaster.presentations.myProfileActivity.MyProfileViewModel
+import com.example.mymaster.presentations.scheduleActivity.ScheduleActivityViewModel
+import com.example.mymaster.presentations.scheduleSettingActivity.ScheduleSettingActivityViewModel
 import com.example.mymaster.presentations.servicesListActivity.ServiceListActivityViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -36,4 +38,18 @@ val appModule = module {
             getUserServicesListUseCase = get()
         )
     }
+    viewModel<ScheduleSettingActivityViewModel>() {
+        ScheduleSettingActivityViewModel(
+            getUserScheduleSettingUseCase = get(),
+            setUserScheduleSettingUseCase = get()
+        )
+
+    }
+    viewModel<ScheduleActivityViewModel>() {
+        ScheduleActivityViewModel(
+            getUserScheduleListUSeCase = get()
+        )
+    }
+
+
 }

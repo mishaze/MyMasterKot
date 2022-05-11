@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.domain.Domain.models.ServicesModel
+import com.example.domain.Domain.models.responses.ResponseServicesList
 import com.example.mymaster.presentations.friendActivity.FriendActivity
 import com.example.mymaster.presentations.myProfileActivity.MyProfile
 import com.example.mymaster.R
@@ -17,14 +19,18 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.messaging.FirebaseMessaging
 
 
 class MainMenu : AppCompatActivity() {
     private lateinit  var mAuth: FirebaseAuth
+    private lateinit var db: DatabaseReference
+
 
     public override fun onStart() {
         mAuth = FirebaseAuth.getInstance()
+
         super.onStart()
 
         val currentUser = mAuth.currentUser
@@ -59,6 +65,20 @@ class MainMenu : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        db = FirebaseDatabase.getInstance().getReference("Master").child(FirebaseAuth.getInstance().currentUser!!.uid).child("Services")
+
+       db.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children) {
+                    Log.d("mmmmmmmm", ds.key.toString())
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
