@@ -27,8 +27,5 @@ class SharedPrefsScheduleSettingList(private val mDatabase: DatabaseReference):S
             }
             callback.onResponse(response)
         }
-
-
-
     }
 }

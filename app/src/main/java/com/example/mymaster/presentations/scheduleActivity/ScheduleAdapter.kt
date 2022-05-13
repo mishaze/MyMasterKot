@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.RecordingSessionModel
-import com.example.mymaster.Models.RecordingSession
 import com.example.mymaster.R
 
 class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
@@ -31,11 +30,11 @@ class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
         val timeEnd = holder.itemView.findViewById<TextView>(R.id.sch_item_time_end)
         val date = holder.itemView.findViewById<TextView>(R.id.sch_item_date)
 
-        name.text = items[position].uidClient
-        service.text = items[position].uidService
-        timeStart.text = timeUnParse(items[position].time.toString())
-        timeEnd.text = timeUnParse(items[position].time.toString())
-        date.text = items[position].data
+        name.text = items[position].uid
+        service.text = items[position].uids
+        timeStart.text = items[position].time.toString()
+        timeEnd.text = items[position].time.toString()
+        date.text = items[position].date
     }
 
     override fun getItemCount(): Int {

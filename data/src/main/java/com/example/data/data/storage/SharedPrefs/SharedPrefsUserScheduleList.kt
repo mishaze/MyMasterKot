@@ -6,53 +6,61 @@ import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.domain.Domain.models.ServicesModel
 import com.example.domain.Domain.models.responses.FirebaseCallback
 import com.example.domain.Domain.models.responses.ResponseScheduleList
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class SharedPrefsUserScheduleList(private val mDatabase: DatabaseReference) : ScheduleListStorage {
+class SharedPrefsUserScheduleList(private val mD: DatabaseReference) : ScheduleListStorage {
     override fun getScheduleList(callback: FirebaseCallback<ResponseScheduleList>) {
 
-        val rsDatabase: DatabaseReference =
-            FirebaseDatabase.getInstance().getReference("Recording_Session")
-        val cDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("Clients")
+        val mrDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("MasterRecords")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid)
+        val cDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("Client")
+        val mDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("Master")
+            .child(FirebaseAuth.getInstance().currentUser!!.uid).child("Services")
 
-        mDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
-
+        mrDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             val response = ResponseScheduleList()
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
                     val temp = ds.getValue(RecordingSessionModel::class.java)
 
-                    //проверить путь
-                    val cQuery = cDatabase.orderByChild("uid").equalTo(temp?.uidClient)
-                    cQuery.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            for (ds in snapshot.children) {
-                                val cl = ds.getValue(ClientInform::class.java)
-                                temp?.uidClient = cl?.name + cl?.surname
+                    cDatabase.child(temp?.uid.toString()).child("name").get().addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val result = task.result
+                            result?.let {
+                                val cl = result.getValue(String::class.java)
+                                temp?.uid = cl
 
-                                //проверить путь
-                                val cQ = cDatabase.orderByChild("uid").equalTo(temp?.uidService)
-                                cQ.addListenerForSingleValueEvent(object : ValueEventListener {
-
-                                    override fun onDataChange(snapshot: DataSnapshot) {
-                                        for (ds in snapshot.children) {
-                                            val sr = ds.getValue(ServicesModel::class.java)
-                                            temp?.uidService = sr?.name
+                                mDatabase.child(temp?.uids.toString()).get().addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        val result = task.result
+                                        result?.let {
+                                            val sr= result.getValue(ServicesModel::class.java)
+                                            temp?.uids = sr?.name
                                             response.answer.add(temp!!)
+
                                         }
+                                    } else {
+                                        response.exception = task.exception
                                     }
 
-                                    override fun onCancelled(error: DatabaseError) {}
-                                })
+                                    callback.onResponse(response)
+
+                                }
                             }
+                        } else {
+                            response.exception = task.exception
                         }
 
-                        override fun onCancelled(error: DatabaseError) {}
-                    })
-                    callback.onResponse(response)
+                    }
+
+
                 }
+
+
+
             }
 
             override fun onCancelled(error: DatabaseError) {}
