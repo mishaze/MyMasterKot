@@ -6,13 +6,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mymaster.Models.Clients
 import com.example.mymaster.R
-import com.example.mymaster.presentations.myProfileActivity.MyProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 class AddFriend : AppCompatActivity() {
     var email:EditText?= null

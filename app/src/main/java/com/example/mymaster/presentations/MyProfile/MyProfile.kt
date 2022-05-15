@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.myProfileActivity
+package com.example.mymaster.presentations.MyProfile
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.domain.Domain.models.UserInformation
 import com.example.mymaster.R
 import com.example.mymaster.presentations.servicesListActivity.ServicesListActivity
@@ -17,15 +16,11 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyProfile : AppCompatActivity() {
 
-    private val mDatabase = FirebaseDatabase
-        .getInstance()
-        .getReference("Master")
-        .child("1")
-        .child("Information")
 
     private val vm by viewModel<MyProfileViewModel>()
 
     private var mAuth = FirebaseAuth.getInstance()
+
 
     public override fun onStart() {
         super.onStart()

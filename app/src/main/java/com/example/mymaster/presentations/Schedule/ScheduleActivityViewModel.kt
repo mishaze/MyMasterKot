@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.scheduleActivity
+package com.example.mymaster.presentations.Schedule
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

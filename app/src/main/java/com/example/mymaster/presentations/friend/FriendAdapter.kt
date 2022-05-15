@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.friendActivity
+package com.example.mymaster.presentations.friend
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

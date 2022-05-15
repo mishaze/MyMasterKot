@@ -19,27 +19,18 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".presentations.addFriendActivity.AddFriend" />
         <activity
-            android:name=".presentations.friendActivity.FriendActivity"
-            android:label="@string/title_activity_friend"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".presentations.servicesActivity.ServicesActivity" />
-        <activity android:name=".presentations.myProfileActivity.MyProfile" />
-        <activity
             android:name=".presentations.settingsActivity.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".presentations.scheduleSettingActivity.ScheduleSettingActivity" />
-        <activity
-            android:name=".presentations.scheduleActivity.ScheduleActivity"
-            android:label="@string/title_activity_schedule"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".Main3Activity" />
         <activity
             android:name=".presentations.mainMenu.MainMenu"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main3Activity"
+            android:name=".presentations.reg.MainActivity"
             android:exported="true"
-            tools:ignore="DuplicateActivity">
+            tools:ignore="DuplicateActivity,MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

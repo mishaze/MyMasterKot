@@ -11,6 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.Navigator
 import com.example.mymaster.databinding.ActivityMain3Binding
 
 
@@ -18,13 +21,15 @@ class Main3Activity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMain3Binding
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMain3Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        navController = Navigation.findNavController(this,R.id.nav_host_fragment_content_main)
+        MAIN = this
         setSupportActionBar(binding.appBarMain3.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -35,7 +40,7 @@ class Main3Activity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_profile, R.id.nav_slideshow
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

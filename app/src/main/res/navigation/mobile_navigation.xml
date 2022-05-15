@@ -7,19 +7,32 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.mymaster.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.example.mymaster.presentations.Schedule.FragmentSchedule"
+        android:label="РАСПИСАНИЕ"
+        tools:layout="@layout/fragment_schedule" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.mymaster.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_profile"
+        android:name="com.example.mymaster.presentations.MyProfile.FragmentMyProfile"
+        android:label="ПРОФИЛЬ"
+        tools:layout="@layout/fragment_my_profile" >
+        <action
+            android:id="@+id/action_nav_profile_to_fragmentServicesList"
+            app:destination="@id/fragmentServicesList" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.mymaster.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.example.mymaster.presentations.friend.FriendFragment"
+        android:label="КЛИЕНТЫ"
+        tools:layout="@layout/fragment_friend" />
+    <fragment
+        android:id="@+id/fragmentServicesList"
+        android:name="com.example.mymaster.presentations.servicesListActivity.FragmentServicesList"
+        android:label="СПИСОК УСЛУГ"
+        tools:layout="@layout/fragment_services_list" >
+        <action
+            android:id="@+id/action_fragmentServicesList_to_nav_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
 </navigation>

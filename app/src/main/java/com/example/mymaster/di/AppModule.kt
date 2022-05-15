@@ -1,9 +1,9 @@
 package com.example.mymaster.di
 
 import com.example.mymaster.presentations.addFriendActivity.AddFriendActivityViewModel
-import com.example.mymaster.presentations.friendActivity.FriendActivityViewModel
-import com.example.mymaster.presentations.myProfileActivity.MyProfileViewModel
-import com.example.mymaster.presentations.scheduleActivity.ScheduleActivityViewModel
+import com.example.mymaster.presentations.friend.FriendActivityViewModel
+import com.example.mymaster.presentations.MyProfile.MyProfileViewModel
+import com.example.mymaster.presentations.Schedule.ScheduleActivityViewModel
 import com.example.mymaster.presentations.scheduleSettingActivity.ScheduleSettingActivityViewModel
 import com.example.mymaster.presentations.servicesListActivity.ServiceListActivityViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

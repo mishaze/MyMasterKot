@@ -16,7 +16,7 @@
 
             android:title="РАСПИСАНИЕ" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_profile"
             android:title="ПРОФИЛЬ" />
         <item
             android:id="@+id/nav_slideshow"

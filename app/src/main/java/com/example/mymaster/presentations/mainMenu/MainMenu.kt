@@ -8,10 +8,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.mymaster.presentations.friendActivity.FriendActivity
-import com.example.mymaster.presentations.myProfileActivity.MyProfile
+import com.example.mymaster.presentations.friend.FriendActivity
+import com.example.mymaster.presentations.MyProfile.MyProfile
 import com.example.mymaster.R
-import com.example.mymaster.presentations.scheduleActivity.ScheduleActivity
+import com.example.mymaster.presentations.Schedule.ScheduleActivity
 import com.example.mymaster.presentations.settingsActivity.SettingsActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton

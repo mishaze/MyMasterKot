@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.domain.Domain.models.*
+import com.example.mymaster.Main3Activity
 import com.example.mymaster.presentations.mainMenu.MainMenu
 import com.example.mymaster.R
 import com.google.android.material.snackbar.Snackbar
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener {
 
 
-                    startActivity(Intent(this@MainActivity, MainMenu::class.java))
+                    startActivity(Intent(this@MainActivity, Main3Activity::class.java))
                     finish()
                 }.addOnFailureListener { e ->
 
@@ -220,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                                 .addOnSuccessListener {
                                     startActivity(
                                         Intent(
-                                            this@MainActivity, MainMenu::class.java
+                                            this@MainActivity, Main3Activity::class.java
                                         )
                                     )
                                     finish()

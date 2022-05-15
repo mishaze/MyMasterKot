@@ -1,48 +1,40 @@
-package com.example.mymaster.presentations.friendActivity
+package com.example.mymaster.presentations.friend
 
-import android.content.Intent
 import android.os.Bundle
-
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.ClientInform
-import com.example.mymaster.presentations.addFriendActivity.AddFriend
-//import androidx.appcompat.app.AppCompatActivity
-//import androidx.appcompat.widget.Toolbar
-//import androidx.recyclerview.widget.LinearLayoutManager
-//import androidx.recyclerview.widget.RecyclerView
-import com.example.mymaster.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-//import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
-class FriendActivity : AppCompatActivity() {
+import com.example.mymaster.databinding.FragmentFriendBinding
+import com.google.firebase.auth.FirebaseAuth
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.ArrayList
+
+class FriendFragment:Fragment() {
+
     private var items: MutableList<ClientInform> = ArrayList()
     private val adapter: RecyclerView.Adapter<*> = FriendAdapter(items)
     private var mAuth: FirebaseAuth? = null
-    public override fun onStart() {
-        mAuth = FirebaseAuth.getInstance()
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = mAuth!!.currentUser
-        if (currentUser != null) {
-            //reload();
-        }
-    }
 
     private val vm by viewModel<FriendActivityViewModel>()
+    private var _binding: FragmentFriendBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_friend)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentFriendBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
-        val recyclerView = findViewById<RecyclerView>(R.id.friend_list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val recyclerView = binding.friendList
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         /*
         this.items.add(new Clients("Михаил","Зусман","misha@list.ru","88945654564"));
@@ -53,11 +45,12 @@ class FriendActivity : AppCompatActivity() {
         this.items.add(new Clients("Петр","Третьяков","pppetrrrr@list.ru","88945656964"));
         this.items.add(new Clients("Василий","Гайлер","vasiyaa@list.ru","88945656514"));
         */
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        /*
+        val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { startActivity(Intent(this@FriendActivity, AddFriend::class.java)) }
-
+        */
         vm.resultLive.observe(this,{
 
             items = it
@@ -66,6 +59,13 @@ class FriendActivity : AppCompatActivity() {
         )
 
         vm.getFriendList()
+
+        return root
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.myProfileActivity
+package com.example.mymaster.presentations.MyProfile
 
 import androidx.lifecycle.*
 import com.example.domain.Domain.models.responses.FirebaseCallback
