@@ -8,8 +8,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.domain.Domain.models.ServicesModel
-import com.example.domain.Domain.models.responses.ResponseServicesList
 import com.example.mymaster.presentations.friendActivity.FriendActivity
 import com.example.mymaster.presentations.myProfileActivity.MyProfile
 import com.example.mymaster.R

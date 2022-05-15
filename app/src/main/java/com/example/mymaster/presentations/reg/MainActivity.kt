@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.domain.Domain.models.*
 import com.example.mymaster.presentations.mainMenu.MainMenu
 import com.example.mymaster.R
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseDatabase
     private lateinit var masters: DatabaseReference
-    private lateinit var root: RelativeLayout
+    private lateinit var root: ConstraintLayout
 
     private val vm by viewModel<MainActivityViewModel>()
 

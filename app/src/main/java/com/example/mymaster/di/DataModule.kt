@@ -14,68 +14,73 @@ val dataModUle = module {
 
 
     //MyProfile
-    val db = FirebaseDatabase
-        .getInstance()
+    val db = FirebaseDatabase.getInstance()
         .getReference("Master")
-        .child(FirebaseAuth.getInstance()
-            .currentUser!!.uid)
-        .child("Information")
+        .child(
+            FirebaseAuth.getInstance()
+                .currentUser?.uid.toString()
+        ).child("Information")
+
 
     //AddFriend and //ListFriend
     val mDb = FirebaseDatabase.getInstance()
         .getReference("Master")
-        .child(FirebaseAuth.getInstance()
-        .currentUser!!.uid)
+        .child(
+            FirebaseAuth.getInstance()
+                .currentUser?.uid.toString()
+        )
 
     //ServiceList
     val mDatabase  = FirebaseDatabase.getInstance()
-        .getReference("Master")
-        .child(FirebaseAuth.getInstance()
-            .currentUser!!.uid)
+    .getReference("Master")
+    .child(
+        FirebaseAuth.getInstance()
+            .currentUser?.uid.toString()
+    )
     //.child("Services")
 
 
     //MyProfile
-    single<UserInformationStorage> {
-        SharedPrefUserInformationStorage(db)
+    factory <UserInformationStorage> {
+        SharedPrefUserInformationStorage(db!!)
     }
 
-    single<UserInformationRepository> {
+    factory<UserInformationRepository> {
         UserInformationRepositoryImpl(get())
     }
 
     //AddInFriend and  //Friend List
-    single<FriendStorage> {
+    factory<FriendStorage> {
         SharedPrefUserFriend(mDb)
     }
 
-    single<FriendRepository> {
+    factory<FriendRepository> {
         MasterFriendRepositoryImpl(get())
     }
 
     //ServicesList
-    single<ServicesStorage> {
+    factory<ServicesStorage> {
         SharedPrefsUserServices(mDatabase)
     }
 
-    single<ServicesRepository> {
+    factory<ServicesRepository> {
         ServicesListRepositoryImpl(get())
     }
     //Schedule
-    single<ScheduleListStorage> {
+    factory<ScheduleListStorage> {
         SharedPrefsUserScheduleList(mDb)
     }
 
-    single<ScheduleRepository> {
+    factory<ScheduleRepository> {
         ScheduleRepositoryImpl(get())
     }
     //ScheduleSetting
 
-    single<ScheduleSettingStorage> {
+    factory<ScheduleSettingStorage> {
         SharedPrefsScheduleSettingList(mDatabase)
     }
 
-    single<ScheduleSettingRepository> {
+    factory<ScheduleSettingRepository> {
         ScheduleSettingRepositoryImpl(get())
     }
 

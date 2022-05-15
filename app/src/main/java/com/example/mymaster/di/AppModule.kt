@@ -1,8 +1,6 @@
 package com.example.mymaster.di
 
-import com.example.mymaster.presentations.addFriendActivity.AddFriend
 import com.example.mymaster.presentations.addFriendActivity.AddFriendActivityViewModel
-import com.example.mymaster.presentations.friendActivity.FriendActivity
 import com.example.mymaster.presentations.friendActivity.FriendActivityViewModel
 import com.example.mymaster.presentations.myProfileActivity.MyProfileViewModel
 import com.example.mymaster.presentations.scheduleActivity.ScheduleActivityViewModel

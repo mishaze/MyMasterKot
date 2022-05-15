@@ -1,148 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardElevation="10dp"
-    android:id="@+id/mp_root"
-    tools:context=".presentations.myProfileActivity.MyProfile">
+    tools:context=".ui.gallery.GalleryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpFirstname"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpFirstname"
             android:hint="Имя"
             android:inputType="text"
-            text=""
+            android:maxLength="15"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="15"
 
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpName"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpName"
             android:hint="Фамилия"
             android:inputType="text"
-            text=""
+            android:maxLength="15"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="15"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpPhone"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpPhone"
             android:hint="Телефон"
             android:inputType="number"
-            text=""
+            android:maxLength="15"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="15"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpEmail"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpEmail"
             android:hint="Email"
             android:inputType="none"
-            text=""
+            android:maxLength="40"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="40"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpAddress"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpAddress"
             android:hint="Адрес"
             android:inputType="textPostalAddress"
-            text=""
+            android:maxLength="150"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="150"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpInfo"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpInfo"
             android:hint="Информация о мастере"
             android:inputType="textEmailAddress"
-            text=""
+            android:maxLength="200"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="200"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mpSpec"
+            text=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mpSpec"
             android:hint="Специализация"
             android:inputType="textEmailAddress"
-            text=""
+            android:maxLength="200"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:maxLength="200"
-            app:met_floatingLabel="highlight"
             app:met_baseColor="#0056d3"
-            app:met_primaryColor="#982360"
             app:met_errorColor="#ddaa00"
-            app:met_singleLineEllipsis="true"
-            />
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true" />
+
         <Button
             android:id="@+id/mp_btn_services"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/btn_rounded_corner"
             android:text="Виды услуг"
             android:textColor="@color/text_blue"
-            android:textSize="15sp"
-            android:layout_marginBottom="10dp"/>
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/mp_btn_save"
@@ -153,7 +155,4 @@
             android:textColor="@color/text_blue"
             android:textSize="15sp" />
     </LinearLayout>
-
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
