@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.example.mymaster.presentations.Schedule.FragmentSchedule"
         android:label="РАСПИСАНИЕ"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule" >
+        <action
+            android:id="@+id/action_nav_home_to_fragmentScheduleSetting"
+            app:destination="@id/fragmentScheduleSetting" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
@@ -28,11 +32,26 @@
         tools:layout="@layout/fragment_friend" />
     <fragment
         android:id="@+id/fragmentServicesList"
-        android:name="com.example.mymaster.presentations.servicesListActivity.FragmentServicesList"
+        android:name="com.example.mymaster.presentations.servicesList.FragmentServicesList"
         android:label="СПИСОК УСЛУГ"
         tools:layout="@layout/fragment_services_list" >
         <action
             android:id="@+id/action_fragmentServicesList_to_nav_profile"
             app:destination="@id/nav_profile" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.example.mymaster.presentations.settingsActivity.SettingFragment"
+        android:label="НАСТРОЙКИ"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/fragmentScheduleSetting"
+        android:name="com.example.mymaster.presentations.scheduleSettingActivity.FragmentScheduleSetting"
+        android:label="НАСТРОЙКА РАСПИСАНИЯ"
+        tools:layout="@layout/fragment_main_schedule_setting" >
+        <action
+            android:id="@+id/action_fragmentScheduleSetting_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
 </navigation>

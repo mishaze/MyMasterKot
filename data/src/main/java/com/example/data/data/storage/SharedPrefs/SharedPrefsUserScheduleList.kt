@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class SharedPrefsUserScheduleList(private val mD: DatabaseReference) : ScheduleListStorage {
+class SharedPrefsUserScheduleList() : ScheduleListStorage {
     override fun getScheduleList(callback: FirebaseCallback<ResponseScheduleList>) {
 
         val mrDatabase: DatabaseReference = FirebaseDatabase.getInstance().getReference("MasterRecords")
@@ -55,12 +55,7 @@ class SharedPrefsUserScheduleList(private val mD: DatabaseReference) : ScheduleL
                         }
 
                     }
-
-
                 }
-
-
-
             }
 
             override fun onCancelled(error: DatabaseError) {}

@@ -12,12 +12,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:ignore="MissingConstraints"
         android:paddingHorizontal="6dp"
-        android:paddingVertical="15dp">
-
-
+        android:paddingVertical="15dp"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +26,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
             <TextView
                 android:id="@+id/fri_item_first_name"
                 android:layout_width="wrap_content"
@@ -63,7 +63,16 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="15sp" />
+
         </LinearLayout>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background_main_color"/>
 
     </LinearLayout>
 

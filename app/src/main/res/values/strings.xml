@@ -78,4 +78,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_main3">Main3Activity</string>
 
+    <string name="tab_text_1">Неделя 1</string>
+    <string name="tab_text_2">Неделя 2</string>
+
+
 </resources>

@@ -18,7 +18,13 @@ class ScheduleSettingActivityViewModel(
     private var resultLiveMutable = MutableLiveData<ScheduleSettingModel>()
     val resultLive: LiveData<ScheduleSettingModel> = resultLiveMutable
 
-    fun save(scheduleSetting: ArrayList<ScheduleSettingModel>) {
+    private val _index = MutableLiveData<Int>()
+
+    fun setIndex(index: Int) {
+        _index.value = index
+    }
+
+    fun save(scheduleSetting: ScheduleSettingModel) {
         setUserScheduleSettingUseCase.execute(scheduleSetting)
         //resultLiveMutable.value = scheduleSetting
     }

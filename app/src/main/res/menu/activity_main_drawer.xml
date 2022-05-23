@@ -6,29 +6,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:title="МЕНЮ" />
-        <item
-            android:title="" />
-        <item
-            android:title="" />
-        <item
             android:id="@+id/nav_home"
-
             android:title="РАСПИСАНИЕ" />
         <item
             android:id="@+id/nav_profile"
             android:title="ПРОФИЛЬ" />
         <item
             android:id="@+id/nav_slideshow"
-
             android:title="КЛИЕНТЫ" />
         <item
             android:id="@+id/nav_setting"
-
             android:title="НАСТРОЙКИ" />
         <item
             android:id="@+id/nav_stat"
-
             android:title="СТАТИСТИКА" />
     </group>
 </menu>

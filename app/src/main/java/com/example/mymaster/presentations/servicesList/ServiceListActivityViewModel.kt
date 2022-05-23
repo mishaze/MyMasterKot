@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.servicesListActivity
+package com.example.mymaster.presentations.servicesList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

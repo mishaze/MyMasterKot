@@ -4,12 +4,10 @@ import com.example.data.data.storage.interfaces.ServicesStorage
 import com.example.domain.Domain.models.ServicesModel
 import com.example.domain.Domain.models.responses.FirebaseCallback
 import com.example.domain.Domain.models.responses.ResponseServicesList
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
-class SharedPrefsUserServices(private val mDatabase: DatabaseReference) : ServicesStorage {
+class SharedPrefsUserServices() : ServicesStorage {
 
     private val result = ResponseServicesList()
 
@@ -19,18 +17,38 @@ class SharedPrefsUserServices(private val mDatabase: DatabaseReference) : Servic
 
         servicesList.forEach {
             if (it.uidServices.equals("")) {
-                val temp = mDatabase.child("Services").push().key.toString()
+                val temp =         FirebaseDatabase.getInstance()
+                    .getReference("Master")
+                    .child(
+                        FirebaseAuth.getInstance()
+                            .currentUser?.uid.toString()
+                    ).child("Services").push().key.toString()
                 it.uidServices = temp
-                mDatabase.child("Services").child(temp).setValue(it)
+                FirebaseDatabase.getInstance()
+                    .getReference("Master")
+                    .child(
+                        FirebaseAuth.getInstance()
+                            .currentUser?.uid.toString()
+                    ).child("Services").child(temp).setValue(it)
             } else {
-                mDatabase.child("Services").child(it.uidServices.toString()).setValue(it)
+                FirebaseDatabase.getInstance()
+                    .getReference("Master")
+                    .child(
+                        FirebaseAuth.getInstance()
+                            .currentUser?.uid.toString()
+                    ).child("Services").child(it.uidServices.toString()).setValue(it)
             }
         }
     }
 
     override fun getUserInformation(callback: FirebaseCallback<ResponseServicesList>) {
 
-        mDatabase.child("Services").addListenerForSingleValueEvent(object : ValueEventListener {
+        FirebaseDatabase.getInstance()
+            .getReference("Master")
+            .child(
+                FirebaseAuth.getInstance()
+                    .currentUser?.uid.toString()
+            ).child("Services").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (ds in snapshot.children) {
                     ds.getValue(ServicesModel::class.java)?.let { result.answer.add(it) }

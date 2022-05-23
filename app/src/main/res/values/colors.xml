@@ -8,6 +8,6 @@
     <color name="btn_sign_in">#E91E63</color>
     <color name="background_main_color">#D8F8FF</color>
     <color name="text_blue">#0057FF</color>
-
+    <color name="white">#FFFFFF</color>
 
 </resources>

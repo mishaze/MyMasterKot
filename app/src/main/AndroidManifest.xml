@@ -13,20 +13,21 @@
         android:roundIcon="@drawable/fui_ic_github_white_24dp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
+        <service
+            android:name=".FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
-            android:name=".presentations.servicesListActivity.ServicesListActivity"
+            android:name=".presentations.servicesList.ServicesListActivity"
             android:label="@string/title_activity_services_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".presentations.addFriendActivity.AddFriend" />
-        <activity
-            android:name=".presentations.settingsActivity.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".presentations.scheduleSettingActivity.ScheduleSettingActivity" />
+
         <activity android:name=".Main3Activity" />
-        <activity
-            android:name=".presentations.mainMenu.MainMenu"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".presentations.reg.MainActivity"
             android:exported="true"
@@ -37,6 +38,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_baseline_menu_book_24" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_web_client_id" />
+
     </application>
+
+
 
 </manifest>

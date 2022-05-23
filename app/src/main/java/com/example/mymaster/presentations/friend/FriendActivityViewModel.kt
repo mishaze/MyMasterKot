@@ -1,5 +1,6 @@
 package com.example.mymaster.presentations.friend
 
+import AddInFriendUseCase
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.Domain.models.ClientInform
@@ -8,7 +9,8 @@ import com.example.domain.Domain.models.responses.ResponseListFriendMaster
 import com.example.domain.Domain.usecase.GetListFriendUseCase
 
 class FriendActivityViewModel(
-    private val getUserFriendListUSeCase: GetListFriendUseCase
+    private val getUserFriendListUSeCase: GetListFriendUseCase,
+    private val addFriendUseCase: AddInFriendUseCase
 ) : ViewModel() {
 
     private var resultLiveMutable = MutableLiveData<ArrayList<ClientInform>>()
@@ -20,6 +22,11 @@ class FriendActivityViewModel(
                 resultLiveMutable.value = response.answer
             }
         })
+    }
+
+    fun addFriend(email :String)
+    {
+        addFriendUseCase.execute(email)
     }
 
 }

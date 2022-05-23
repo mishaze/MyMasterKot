@@ -3,54 +3,89 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
 
     <LinearLayout
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
-        <TextView
-            android:id="@+id/ser_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
         <EditText
+            android:layout_marginTop="15dp"
+            android:textSize="28sp"
             android:id="@+id/ser_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_services"
             android:maxLength="40"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:background="@android:color/white"
+            />
+
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
+                android:textSize="16sp"
                 android:id="@+id/ser_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/price_services"
                 android:maxLength="5"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:background="@android:color/white"
+
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="рублей"/>
+                android:text="₽"/>
             <EditText
+                android:textSize="16sp"
                 android:layout_marginStart="10dp"
                 android:id="@+id/ser_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/time_services"
                 android:maxLength="3"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:background="@android:color/white"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="минут"/>
+                android:text="мин"/>
+            <View
+                android:layout_width="180dp"
+                android:layout_height="match_parent" />
+            <ImageButton
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@android:color/white"
+                android:src="@drawable/ic_baseline_close_24" />
         </LinearLayout>
+        <EditText
+
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:id="@+id/ser_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Инофрмация "
+            android:maxLength="100"
+            android:inputType="text"/>
+        <View
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background_main_color"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

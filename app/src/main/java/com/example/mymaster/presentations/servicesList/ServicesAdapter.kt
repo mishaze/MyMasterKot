@@ -1,9 +1,8 @@
-package com.example.mymaster.presentations.servicesListActivity
+package com.example.mymaster.presentations.servicesList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.ServicesModel
 
@@ -18,11 +17,11 @@ import com.example.mymaster.R
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val num = holder.itemView.findViewById<TextView>(R.id.ser_num)
+        //val num = holder.itemView.findViewById<TextView>(R.id.ser_num)
         val name = holder.itemView.findViewById<EditText>(R.id.ser_name)
         val price = holder.itemView.findViewById<EditText>(R.id.ser_price)
         val time = holder.itemView.findViewById<EditText>(R.id.ser_time)
-        num.text = (position + 1).toString()
+       // num.text = (position + 1).toString()
         name.setText(items[position].name)
         price.setText(items[position].price)
         time.setText(items[position].timeInWork)

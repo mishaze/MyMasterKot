@@ -7,6 +7,5 @@ class ClientInform {
     var name:String? = ""
     var phone_number:String? = ""
     var surname:String? = ""
-    var friends: ArrayList<String?> = ArrayList<String?>()
     var uid: String? = ""
 }

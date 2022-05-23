@@ -9,7 +9,7 @@ import com.example.domain.Domain.repository.ScheduleSettingRepository
 
 class ScheduleSettingRepositoryImpl(private val scheduleSettingStorage: ScheduleSettingStorage) :
     ScheduleSettingRepository {
-    override fun setScheduleSetting(scheduleSettingList: ArrayList<ScheduleSettingModel>) {
+    override fun setScheduleSetting(scheduleSettingList: ScheduleSettingModel) {
         scheduleSettingStorage.saveScheduleSettingList(scheduleSettingList)
     }
 

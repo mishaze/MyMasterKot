@@ -7,7 +7,7 @@ import com.example.domain.Domain.models.responses.ResponseServicesList
 
 interface ScheduleSettingStorage {
 
-    fun saveScheduleSettingList(scheduleSettingList: ArrayList<ScheduleSettingModel> )
+    fun saveScheduleSettingList(scheduleSettingList: ScheduleSettingModel )
 
     fun getScheduleSettingList(callback: FirebaseCallback<ResponseScheduleSettingList>)
 

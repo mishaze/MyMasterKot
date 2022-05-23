@@ -47,4 +47,13 @@ val domainModule = module {
         SetUserScheduleSettingUseCase(get())
     }
 
+    //Setting
+    factory<GetUserSetting> {
+        GetUserSetting(get())
+    }
+
+    factory<SetUserSetting> {
+        SetUserSetting(get())
+    }
+
 }

@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.RecordingSessionModel
+import com.example.mymaster.MAIN
+import com.example.mymaster.R
 import com.example.mymaster.databinding.FragmentScheduleBinding
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -36,20 +38,13 @@ class FragmentSchedule:Fragment() {
         recyclerView.adapter = adapter
         adapter.notifyItemInserted(items.size - 1)
         //addRecyclerview()
-/*
-        val toolbar = binding.toolbar
-        setSupportActionBar(toolbar)
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
+
+        val fab = binding.fab
         fab.setOnClickListener {
-            startActivity(
-                Intent(
-                    this@ScheduleActivity,
-                    ScheduleSettingActivity::class.java
-                )
-            )
+            MAIN.navController.navigate(R.id.action_nav_home_to_fragmentScheduleSetting)
         }
-*/
+
         vm.resultLive.observe(this, {
             items.clear()
             adapter.notifyDataSetChanged()

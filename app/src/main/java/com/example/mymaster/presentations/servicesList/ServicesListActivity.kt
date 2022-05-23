@@ -1,4 +1,4 @@
-package com.example.mymaster.presentations.servicesListActivity
+package com.example.mymaster.presentations.servicesList
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,13 +10,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.ServicesModel
-import com.example.mymaster.Models.Services
 import com.example.mymaster.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.lang.Thread.sleep
 import java.util.*
 import kotlin.collections.ArrayList
 

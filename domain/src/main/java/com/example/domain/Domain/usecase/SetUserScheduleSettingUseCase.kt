@@ -5,7 +5,7 @@ import com.example.domain.Domain.repository.ScheduleSettingRepository
 
 
 class SetUserScheduleSettingUseCase(private val scheduleSettingRepository: ScheduleSettingRepository) {
-    fun execute(user: ArrayList<ScheduleSettingModel>) {
+    fun execute(user: ScheduleSettingModel) {
         scheduleSettingRepository.setScheduleSetting(user)
     }
 }

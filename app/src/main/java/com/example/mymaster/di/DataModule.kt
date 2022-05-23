@@ -12,7 +12,7 @@ import java.util.*
 
 val dataModUle = module {
 
-
+/*
     //MyProfile
     val db = FirebaseDatabase.getInstance()
         .getReference("Master")
@@ -29,7 +29,7 @@ val dataModUle = module {
             FirebaseAuth.getInstance()
                 .currentUser?.uid.toString()
         )
-
+*/
     //ServiceList
     val mDatabase  = FirebaseDatabase.getInstance()
     .getReference("Master")
@@ -42,7 +42,7 @@ val dataModUle = module {
 
     //MyProfile
     factory <UserInformationStorage> {
-        SharedPrefUserInformationStorage(db!!)
+        SharedPrefUserInformationStorage()
     }
 
     factory<UserInformationRepository> {
@@ -51,7 +51,7 @@ val dataModUle = module {
 
     //AddInFriend and  //Friend List
     factory<FriendStorage> {
-        SharedPrefUserFriend(mDb)
+        SharedPrefUserFriend()
     }
 
     factory<FriendRepository> {
@@ -60,7 +60,7 @@ val dataModUle = module {
 
     //ServicesList
     factory<ServicesStorage> {
-        SharedPrefsUserServices(mDatabase)
+        SharedPrefsUserServices()
     }
 
     factory<ServicesRepository> {
@@ -68,7 +68,7 @@ val dataModUle = module {
     }
     //Schedule
     factory<ScheduleListStorage> {
-        SharedPrefsUserScheduleList(mDb)
+        SharedPrefsUserScheduleList()
     }
 
     factory<ScheduleRepository> {
@@ -77,11 +77,19 @@ val dataModUle = module {
     //ScheduleSetting
 
     factory<ScheduleSettingStorage> {
-        SharedPrefsScheduleSettingList(mDatabase)
+        SharedPrefsScheduleSettingList()
     }
 
     factory<ScheduleSettingRepository> {
         ScheduleSettingRepositoryImpl(get())
     }
 
+    //Setting
+    factory<SettingStorage> {
+        SharedPrefsSetting()
+    }
+
+    factory<SettingRepository> {
+        SettingRepositoryImpl(get())
+    }
 }

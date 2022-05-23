@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.widget.Button
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.domain.Domain.models.*
 import com.example.mymaster.Main3Activity
-import com.example.mymaster.presentations.mainMenu.MainMenu
+import com.example.mymaster.NotificationHelper
 import com.example.mymaster.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +27,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var root: ConstraintLayout
 
     private val vm by viewModel<MainActivityViewModel>()
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            startActivity(
+                Intent(
+                    this@MainActivity, Main3Activity::class.java
+                )
+            )
+            finish()
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +72,8 @@ class MainActivity : AppCompatActivity() {
 
         dialog.setPositiveButton("Отмена") { dialogInterface, _ -> dialogInterface.dismiss() }
         dialog.setNegativeButton("OK", DialogInterface.OnClickListener { _, _ ->
+
+
             if (TextUtils.isEmpty(email.text.toString())) {
                 Snackbar.make(root, "Введите email", Snackbar.LENGTH_SHORT).show()
                 return@OnClickListener
@@ -187,6 +202,53 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
 
+                    temp1.add(
+                        DayWeek(
+                            monday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            tuesday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            wednesday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            thursday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            friday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            sunday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            ),
+                            saturday = Day(
+                                start = "08:00",
+                                end = "23:00",
+                                start_dinner = "00:00",
+                                end_dinner = "00:00"
+                            )
+                        )
+                    )
+
                     val scheduleSetting =
                         ScheduleSettingModel(time = "01:50", num = 1, dayOfWeek = temp1)
                     val servicesModel = ServicesModel(
@@ -213,6 +275,7 @@ class MainActivity : AppCompatActivity() {
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Information")
                         .setValue(userInformation)
                         .addOnSuccessListener {
+
 
                             auth.signInWithEmailAndPassword(
                                 userInformation.email!!,

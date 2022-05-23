@@ -1,31 +1,47 @@
 package com.example.data.data.storage.SharedPrefs
 
 import com.example.data.data.storage.interfaces.ScheduleSettingStorage
+import com.example.domain.Domain.models.DayWeek
+import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.domain.Domain.models.ScheduleSettingModel
+import com.example.domain.Domain.models.ServicesModel
 import com.example.domain.Domain.models.responses.FirebaseCallback
+import com.example.domain.Domain.models.responses.ResponseScheduleList
 import com.example.domain.Domain.models.responses.ResponseScheduleSettingList
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import java.time.DayOfWeek
 
 
-class SharedPrefsScheduleSettingList(private val mDatabase: DatabaseReference):ScheduleSettingStorage{
+class SharedPrefsScheduleSettingList():ScheduleSettingStorage{
 
-    override fun saveScheduleSettingList(scheduleSettingList: ArrayList<ScheduleSettingModel>) {
-        mDatabase.child("schedule").setValue(scheduleSettingList)
+    override fun saveScheduleSettingList(scheduleSettingList: ScheduleSettingModel) {
+        FirebaseDatabase.getInstance()
+            .getReference("Master")
+            .child(
+                FirebaseAuth.getInstance()
+                    .currentUser?.uid.toString()
+            ).child("Schedule").setValue(scheduleSettingList)
     }
 
     override fun getScheduleSettingList(callback: FirebaseCallback<ResponseScheduleSettingList>) {
 
-        mDatabase.get().addOnCompleteListener { task ->
+        FirebaseDatabase.getInstance()
+            .getReference("Master")
+            .child(
+                FirebaseAuth.getInstance()
+                    .currentUser?.uid.toString()
+            ).child("Schedule").addListenerForSingleValueEvent(object : ValueEventListener {
+
             val response = ResponseScheduleSettingList()
-            if (task.isSuccessful) {
-                val result = task.result
-                result?.let {
-                    response.answer = result.getValue(ScheduleSettingModel::class.java)!!
-                }
-            } else {
-                response.exception = task.exception
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                val temp = snapshot.getValue(ScheduleSettingModel::class.java)
+                response.answer = temp!!
+                callback.onResponse(response)
             }
-            callback.onResponse(response)
-        }
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
     }
 }

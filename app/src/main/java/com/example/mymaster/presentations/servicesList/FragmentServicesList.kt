@@ -1,23 +1,15 @@
-package com.example.mymaster.presentations.servicesListActivity
+package com.example.mymaster.presentations.servicesList
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.ServicesModel
-import com.example.mymaster.R
-import com.example.mymaster.databinding.FragmentFriendBinding
 import com.example.mymaster.databinding.FragmentServicesListBinding
-import com.example.mymaster.presentations.MyProfile.FragmentMyProfile
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FragmentServicesList : Fragment() {

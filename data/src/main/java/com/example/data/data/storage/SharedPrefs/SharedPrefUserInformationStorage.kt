@@ -5,13 +5,19 @@ import com.example.data.data.storage.models.UserInformStorageModel
 import com.example.domain.Domain.models.responses.ResponseUserInformation
 import com.example.domain.Domain.models.UserInformation
 import com.example.domain.Domain.models.responses.FirebaseCallback
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class SharedPrefUserInformationStorage(private val mDatabase: DatabaseReference) :
+class SharedPrefUserInformationStorage() :
     UserInformationStorage {
     override fun saveUserInformation(user: UserInformStorageModel): Boolean {
         // if (firstName.text.toString().length > 1) {
-        mDatabase.setValue(user)
+        FirebaseDatabase.getInstance()
+            .getReference("Master")
+            .child(
+                FirebaseAuth.getInstance()
+                    .currentUser?.uid.toString()
+            ).child("Information").setValue(user)
         //mDatabase.child("name").setValue(user.name)
         //mDatabase.child("surname").setValue(user.surname)
         //mDatabase.child("phone_number").setValue(user.phone_number)
@@ -24,7 +30,12 @@ class SharedPrefUserInformationStorage(private val mDatabase: DatabaseReference)
 
     override fun getUserInformation(callback: FirebaseCallback<ResponseUserInformation>){
 
-        mDatabase.get().addOnCompleteListener { task ->
+        FirebaseDatabase.getInstance()
+            .getReference("Master")
+            .child(
+                FirebaseAuth.getInstance()
+                    .currentUser?.uid.toString()
+            ).child("Information").get().addOnCompleteListener { task ->
             val response = ResponseUserInformation()
             if (task.isSuccessful) {
                 val result = task.result
