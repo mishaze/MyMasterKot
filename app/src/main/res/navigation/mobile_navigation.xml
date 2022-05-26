@@ -23,16 +23,19 @@
         <action
             android:id="@+id/action_nav_profile_to_fragmentServicesList"
             app:destination="@id/fragmentServicesList" />
+        <action
+            android:id="@+id/action_nav_profile_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.mymaster.presentations.friend.FriendFragment"
+        android:name="com.example.mymaster.presentations.Friend.FriendFragment"
         android:label="КЛИЕНТЫ"
         tools:layout="@layout/fragment_friend" />
     <fragment
         android:id="@+id/fragmentServicesList"
-        android:name="com.example.mymaster.presentations.servicesList.FragmentServicesList"
+        android:name="com.example.mymaster.presentations.ServicesList.FragmentServicesList"
         android:label="СПИСОК УСЛУГ"
         tools:layout="@layout/fragment_services_list" >
         <action
@@ -41,17 +44,31 @@
     </fragment>
     <fragment
         android:id="@+id/nav_setting"
-        android:name="com.example.mymaster.presentations.settingsActivity.SettingFragment"
+        android:name="com.example.mymaster.presentations.Settings.SettingFragment"
         android:label="НАСТРОЙКИ"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/fragmentScheduleSetting"
-        android:name="com.example.mymaster.presentations.scheduleSettingActivity.FragmentScheduleSetting"
+        android:name="com.example.mymaster.presentations.ScheduleSetting.FragmentScheduleSetting"
         android:label="НАСТРОЙКА РАСПИСАНИЯ"
         tools:layout="@layout/fragment_main_schedule_setting" >
         <action
             android:id="@+id/action_fragmentScheduleSetting_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.mymaster.presentations.Map.MapFragment"
+        android:label="КАРТА"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapFragment_to_nav_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_stat"
+        android:name="com.example.mymaster.presentations.Stat.FragmentStat"
+        android:label="СТАТИСТИКА"
+        tools:layout="@layout/fragment_stat" />
 
 </navigation>

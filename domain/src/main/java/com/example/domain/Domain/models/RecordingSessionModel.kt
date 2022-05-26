@@ -5,5 +5,6 @@ data class RecordingSessionModel(
     var time: String?="",
     var uids :String? = "",
     var uid :String? ="",
-    var status: Boolean? = true
+    var status: Boolean? = true,
+    var price: String? =""
 )

@@ -55,5 +55,9 @@ val domainModule = module {
     factory<SetUserSetting> {
         SetUserSetting(get())
     }
+    //Stat
+    factory<GetUserStat> {
+        GetUserStat(get(),get())
+    }
 
 }

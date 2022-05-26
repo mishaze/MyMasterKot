@@ -12,17 +12,8 @@ class UserInformationRepositoryImpl(private val userInformationStorage: UserInfo
 
     override fun saveUserInformation(user: UserInformation): Boolean {
 
-        val userInformStorage = UserInformStorageModel(
-            name = user.name,
-            surname = user.surname,
-            phone_number = user.phone_number,
-            specialization = user.specialization,
-            legal_information = user.legal_information,
-            email = user.email,
-            master_info = user.master_info
-        )
 
-        return userInformationStorage.saveUserInformation(userInformStorage)
+        return userInformationStorage.saveUserInformation(user)
     }
 
     override fun getUserInformation(callback: FirebaseCallback<ResponseUserInformation>) {

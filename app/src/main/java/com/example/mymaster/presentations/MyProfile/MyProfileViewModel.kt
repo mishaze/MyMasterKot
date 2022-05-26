@@ -22,11 +22,13 @@ class MyProfileViewModel(
     }
 
     fun load() {
-        getUserProfileUseCase.execute(object : FirebaseCallback<ResponseUserInformation> {
+        getUserProfileUseCase.execute(
+            object : FirebaseCallback<ResponseUserInformation> {
             override fun onResponse(response: ResponseUserInformation) {
-                resultLiveMutable.value = response.answer
-            }
 
+                resultLiveMutable.value = response.answer
+
+            }
         })
 
     }

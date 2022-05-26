@@ -1,18 +1,12 @@
 package com.example.data.data.storage.SharedPrefs
 
 import com.example.data.data.storage.interfaces.SettingStorage
-import com.example.domain.Domain.models.RecordingSessionModel
-import com.example.domain.Domain.models.ServicesModel
 import com.example.domain.Domain.models.SettingModel
-import com.example.domain.Domain.models.UserInformation
 import com.example.domain.Domain.models.responses.FirebaseCallback
-import com.example.domain.Domain.models.responses.ResponseScheduleList
 import com.example.domain.Domain.models.responses.ResponseSetting
-import com.example.domain.Domain.models.responses.ResponseUserInformation
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+
 
 class SharedPrefsSetting : SettingStorage {
 

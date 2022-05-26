@@ -1,6 +1,6 @@
 package com.example.domain.Domain.models
 
-import java.util.ArrayList
+
 
 class ClientInform {
     var email:String? = ""

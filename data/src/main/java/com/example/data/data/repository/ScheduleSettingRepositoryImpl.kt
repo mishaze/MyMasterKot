@@ -1,6 +1,5 @@
 package com.example.data.data.repository
 
-
 import com.example.data.data.storage.interfaces.ScheduleSettingStorage
 import com.example.domain.Domain.models.ScheduleSettingModel
 import com.example.domain.Domain.models.responses.FirebaseCallback

@@ -1,6 +1,5 @@
 package com.example.domain.Domain.models.responses
 
-import com.example.domain.Domain.models.ClientInform
 import com.example.domain.Domain.models.RecordingSessionModel
 
 data class ResponseScheduleList(

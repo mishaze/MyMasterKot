@@ -10,6 +10,6 @@ class UserInformStorageModel(
     var legal_information: String? = "",
     var email: String? = "",
     var master_info: String? = ""
-) {
+)
 
-}
+

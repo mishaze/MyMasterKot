@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.view.isInvisible
-import androidx.core.view.marginLeft
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.mymaster.R

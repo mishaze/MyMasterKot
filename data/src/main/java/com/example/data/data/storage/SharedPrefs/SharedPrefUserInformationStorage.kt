@@ -1,7 +1,6 @@
 package com.example.data.data.storage.SharedPrefs
 
 import com.example.data.data.storage.interfaces.UserInformationStorage
-import com.example.data.data.storage.models.UserInformStorageModel
 import com.example.domain.Domain.models.responses.ResponseUserInformation
 import com.example.domain.Domain.models.UserInformation
 import com.example.domain.Domain.models.responses.FirebaseCallback
@@ -10,7 +9,7 @@ import com.google.firebase.database.*
 
 class SharedPrefUserInformationStorage() :
     UserInformationStorage {
-    override fun saveUserInformation(user: UserInformStorageModel): Boolean {
+    override fun saveUserInformation(user: UserInformation): Boolean {
         // if (firstName.text.toString().length > 1) {
         FirebaseDatabase.getInstance()
             .getReference("Master")

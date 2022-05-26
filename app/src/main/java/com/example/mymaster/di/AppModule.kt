@@ -1,14 +1,12 @@
 package com.example.mymaster.di
 
-import com.example.mymaster.presentations.addFriendActivity.AddFriendActivityViewModel
-import com.example.mymaster.presentations.friend.FriendActivityViewModel
+import com.example.mymaster.presentations.Friend.FriendViewModel
 import com.example.mymaster.presentations.MyProfile.MyProfileViewModel
-import com.example.mymaster.presentations.Schedule.ScheduleActivityViewModel
-import com.example.mymaster.presentations.scheduleSettingActivity.FragmentScheduleSetting
-import com.example.mymaster.presentations.scheduleSettingActivity.ScheduleSettingActivityViewModel
-import com.example.mymaster.presentations.servicesList.ServiceListActivityViewModel
-import com.example.mymaster.presentations.settingsActivity.SettingViewModel
-import org.koin.androidx.fragment.dsl.fragment
+import com.example.mymaster.presentations.Schedule.ScheduleViewModel
+import com.example.mymaster.presentations.ScheduleSetting.ScheduleSettingViewModel
+import com.example.mymaster.presentations.ServicesList.ServiceListViewModel
+import com.example.mymaster.presentations.Settings.SettingViewModel
+import com.example.mymaster.presentations.Stat.StatViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -21,34 +19,29 @@ val appModule = module {
         )
     }
 
-    viewModel<AddFriendActivityViewModel> {
-        AddFriendActivityViewModel(
-            addFriendUseCase = get()
-        )
-    }
 
-    viewModel<FriendActivityViewModel>() {
-        FriendActivityViewModel(
+    viewModel<FriendViewModel>() {
+        FriendViewModel(
             getUserFriendListUSeCase = get(),
             addFriendUseCase = get()
         )
     }
 
-    viewModel<ServiceListActivityViewModel>() {
-        ServiceListActivityViewModel(
+    viewModel<ServiceListViewModel>() {
+        ServiceListViewModel(
             setUserServicesListUseCase = get(),
             getUserServicesListUseCase = get()
         )
     }
-    viewModel<ScheduleSettingActivityViewModel>() {
-        ScheduleSettingActivityViewModel(
+    viewModel<ScheduleSettingViewModel>() {
+        ScheduleSettingViewModel(
             getUserScheduleSettingUseCase = get(),
             setUserScheduleSettingUseCase = get()
         )
 
     }
-    viewModel<ScheduleActivityViewModel>() {
-        ScheduleActivityViewModel(
+    viewModel<ScheduleViewModel>() {
+        ScheduleViewModel(
             getUserScheduleListUSeCase = get()
         )
     }
@@ -56,9 +49,14 @@ val appModule = module {
     viewModel<SettingViewModel>() {
         SettingViewModel(
             getUserSettingUseCase = get(),
-            setUserSettingUseCase= get()
+            setUserSettingUseCase = get()
         )
     }
 
+    viewModel<StatViewModel>() {
+        StatViewModel(
+            getUserStat = get()
+        )
+    }
 
 }

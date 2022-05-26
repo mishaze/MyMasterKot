@@ -8,6 +8,5 @@ data class ServicesModel(
     var status : Boolean? = true,
     var uidServices: String?="",
     var evaluation:String? = ""
-
 )
 

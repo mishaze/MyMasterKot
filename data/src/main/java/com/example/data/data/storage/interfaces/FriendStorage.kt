@@ -1,6 +1,5 @@
 package com.example.data.data.storage.interfaces
 
-import com.example.data.data.storage.models.ResponseListFriendMaster
 import com.example.domain.Domain.models.responses.FirebaseCallback
 
 interface FriendStorage {

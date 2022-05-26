@@ -1,17 +1,11 @@
 package com.example.data.data.storage.SharedPrefs
 
 import com.example.data.data.storage.interfaces.ScheduleSettingStorage
-import com.example.domain.Domain.models.DayWeek
-import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.domain.Domain.models.ScheduleSettingModel
-import com.example.domain.Domain.models.ServicesModel
 import com.example.domain.Domain.models.responses.FirebaseCallback
-import com.example.domain.Domain.models.responses.ResponseScheduleList
 import com.example.domain.Domain.models.responses.ResponseScheduleSettingList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import java.time.DayOfWeek
-
 
 class SharedPrefsScheduleSettingList():ScheduleSettingStorage{
 

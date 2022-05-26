@@ -15,12 +15,10 @@ import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
-class FragmentSchedule:Fragment() {
+class FragmentSchedule : Fragment() {
     private var items: MutableList<RecordingSessionModel> = ArrayList()
     private val adapter: RecyclerView.Adapter<*> = ScheduleAdapter(items)
-    private val vm by viewModel<ScheduleActivityViewModel>()
-    private var mAuth = FirebaseAuth.getInstance()
-
+    private val vm by viewModel<ScheduleViewModel>()
     private var _binding: FragmentScheduleBinding? = null
     private val binding get() = _binding!!
 

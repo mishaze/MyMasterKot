@@ -30,12 +30,18 @@ class FragmentMyProfile : Fragment() {
         val secondName = binding.mpName
         val phone = binding.mpPhone
         val email = binding.mpEmail
+        val btnMap = binding.btnMap
         email.isEnabled = false
 
         val address = binding.mpAddress
         val info = binding.mpInfo
         val services = binding.mpBtnServices
         val save = binding.mpBtnSave
+        val specialization = binding.mpSpec
+
+        btnMap.setOnClickListener {
+            MAIN.navController.navigate(R.id.action_nav_profile_to_mapFragment)
+        }
 
         vm.resultLive.observe(this, {
             firstName.setText(it?.name)
@@ -43,25 +49,28 @@ class FragmentMyProfile : Fragment() {
             phone.setText(it?.phone_number)
             email.setText(it?.email)
             info.setText(it?.master_info)
+            address.setText(it?.address)
+            specialization.setText(it?.specialization)
         })
 
         vm.load()
 
-
         services.setOnClickListener {
-                MAIN.navController.navigate(R.id.action_nav_profile_to_fragmentServicesList)
+            MAIN.navController.navigate(R.id.action_nav_profile_to_fragmentServicesList)
         }
 
         save.setOnClickListener {
             vm.save(
+
                 UserInformation(
                     name = firstName.text.toString(),
                     surname = secondName.text.toString(),
                     phone_number = phone.text.toString(),
-                    specialization = "специализация",
-                    legal_information = "юр информ",
+                    specialization = specialization.text.toString(),
+                    legal_information = "",
                     email = email.text.toString(),
-                    master_info = info.text.toString()
+                    master_info = info.text.toString(),
+                    address = address.text.toString()
                 )
             )
         }
