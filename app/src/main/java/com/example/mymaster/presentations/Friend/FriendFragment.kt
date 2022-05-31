@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.Domain.models.ClientInform
@@ -59,15 +60,14 @@ class FriendFragment : Fragment() {
         fab.setOnClickListener { startActivity(Intent(this@FriendActivity, AddFriend::class.java)) }
         */
         vm.resultLive.observe(this, {
-
             it.forEach { items.add(it) }
             adapter.notifyItemInserted(items.size - 1)
-        }
-        )
+        })
 
         fab.setOnClickListener {
             showSignInWindow()
         }
+
         vm.getFriendList()
 
         return root
@@ -75,15 +75,13 @@ class FriendFragment : Fragment() {
 
     private fun showSignInWindow() {
         val dialog = AlertDialog.Builder(MAIN)
-        dialog.setTitle("Войти")
-        dialog.setMessage("Введите информацию для авториции")
+        dialog.setTitle("Добавить клиента")
 
         val inflater = LayoutInflater.from(MAIN)
         val activitySigIn = inflater.inflate(R.layout.add_friend, null)
         dialog.setView(activitySigIn)
 
         val email: MaterialEditText = activitySigIn.findViewById(R.id.addfriend)
-
 
         dialog.setPositiveButton("Отмена") { dialogInterface, _ -> dialogInterface.dismiss() }
         dialog.setNegativeButton("OK", DialogInterface.OnClickListener { _, _ ->

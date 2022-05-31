@@ -18,7 +18,7 @@ val dataModUle = module {
         UserInformationRepositoryImpl(get())
     }
 
-    //AddInFriend and Friend List
+    //AddInFriend and FriendList
     factory<FriendStorage> {
         SharedPrefUserFriend()
     }

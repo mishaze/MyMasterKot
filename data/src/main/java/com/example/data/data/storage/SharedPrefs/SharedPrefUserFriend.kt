@@ -7,8 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*
 
-class SharedPrefUserFriend() : FriendStorage {
-
+class SharedPrefUserFriend : FriendStorage {
 
     override fun addInMasterFriend(email: String) {
 

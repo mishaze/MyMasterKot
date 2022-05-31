@@ -7,6 +7,7 @@ data class ServicesModel(
     var info :String? = "",
     var status : Boolean? = true,
     var uidServices: String?="",
-    var evaluation:String? = ""
+    var evaluation:String? = "",
+    var reviews: Int? = 0
 )
 

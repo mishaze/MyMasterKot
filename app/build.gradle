@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.mymaster"
-        minSdkVersion 30
+        minSdkVersion 29
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -41,78 +41,37 @@ android {
 }
 
 
-
 dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation platform('com.google.firebase:firebase-bom:29.3.1')
-    //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    //noinspection GradleCompatible
-    implementation "com.android.support:appcompat-v7:28.0.0"
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.google.firebase:firebase-common-ktx:20.1.1'
-    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.5'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.android.material:material:1.6.0'
+
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    //noinspection GradleCompatible
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.google.firebase:firebase-auth'
-    //implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
-    implementation 'com.google.firebase:firebase-database:20.0.5'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation platform('com.google.firebase:firebase-bom:29.3.1')
-    implementation 'com.google.firebase:firebase-auth:21.0.4'
-    //implementation 'com.google.firebase:firebase-messaging'
-    implementation 'com.google.firebase:firebase-database-ktx'
 
-    implementation project(path: ':domain')
-    implementation project(path: ':data')
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.firebaseui:firebase-ui-auth:7.1.1'
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-common-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-
-    implementation "io.insert-koin:koin-core"
-    implementation "io.insert-koin:koin-android"
-    implementation "io.insert-koin:koin-test"
-
-
     implementation "io.insert-koin:koin-core:3.1.2"
     implementation "io.insert-koin:koin-android:3.1.2"
     implementation "io.insert-koin:koin-test:3.1.2"
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.1.1'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // Integration with activities
-    implementation 'androidx.activity:activity-compose:1.4.0'
-    // Compose Material Design
-    implementation 'androidx.compose.material:material:1.1.1'
-    // Animations
-    implementation 'androidx.compose.animation:animation:1.1.1'
-    // Tooling support (Previews, etc.)
-    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
-    // Integration with ViewModels
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
-    // UI Tests
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.1.1'
-
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
 }

@@ -54,9 +54,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
+        val chelaybinsk = LatLng(55.15, 61.4)
         mMap.setOnMapClickListener(listener)
         locationManager = MAIN.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        mMap.addMarker(MarkerOptions().position(chelaybinsk))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(chelaybinsk, 15f))
         locationListener = LocationListener { location ->
             mMap.clear()
             val currentPosition = LatLng(location.latitude, location.longitude)
@@ -76,6 +78,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 }
 
             } catch (e: Exception) {
+
                 e.printStackTrace()
             }
 
@@ -109,48 +112,47 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        if (requestCode == 1) {
-            if (grantResults.size < 1) {
-                if (ContextCompat.checkSelfPermission(
-                        MAIN,
-                        android.Manifest.permission.ACCESS_FINE_LOCATION
-                    ) == PackageManager.PERMISSION_GRANTED
-                ) {
-                    locationManager.requestLocationUpdates(
-                        LocationManager.GPS_PROVIDER, 1, 1f,
-                        locationListener
-                    )
+    /*
+        override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+        ) {
+            if (requestCode == 1) {
+                if (grantResults.size < 1) {
+                    if (ContextCompat.checkSelfPermission(
+                            MAIN,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        locationManager.requestLocationUpdates(
+                            LocationManager.GPS_PROVIDER, 1, 1f,
+                            locationListener
+                        )
+                    }
                 }
             }
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
+    */
     val listener = GoogleMap.OnMapClickListener { p0 ->
         mMap.clear()
         val geocoder = Geocoder(MAIN, Locale.getDefault())
-        if (p0 != null) {
-            var address = ""
-            try {
-                val addressList = geocoder.getFromLocation(p0.latitude, p0.longitude, 1)
-                if (addressList.size > 0) {
-                    if (addressList[0].thoroughfare != null) {
-                        address = addressList[0].getAddressLine(0).toString()
-                        val geo = SharedPrefsGeo()
+        var address = ""
+        try {
+            val addressList = geocoder.getFromLocation(p0.latitude, p0.longitude, 1)
+            if (addressList.size > 0) {
+                if (addressList[0].thoroughfare != null) {
+                    address = addressList[0].getAddressLine(0).toString()
+                    val geo = SharedPrefsGeo()
 
-                        geo.setAddress(address)
-                        geo.setGeo("${p0.latitude}:${p0.longitude}")
-                    }
+                    geo.setAddress(address)
+                    geo.setGeo("${p0.latitude}:${p0.longitude}")
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
             }
-            mMap.addMarker(MarkerOptions().position(p0).title(address).draggable(true))
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+        mMap.addMarker(MarkerOptions().position(p0).title(address).draggable(true))
     }
 }

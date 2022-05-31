@@ -1,6 +1,9 @@
 package com.example.mymaster.presentations
 
 import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.navigation.NavigationView
@@ -16,6 +19,7 @@ import androidx.navigation.Navigation
 import com.example.mymaster.MAIN
 import com.example.mymaster.R
 import com.example.mymaster.databinding.ActivityMain3Binding
+import com.example.mymaster.notification.FirebaseMessagingService
 import com.example.mymaster.notification.NotificationHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -47,13 +51,13 @@ class Main3Activity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_slideshow, R.id.nav_setting
+                R.id.nav_home, R.id.nav_profile, R.id.nav_slideshow, R.id.nav_setting, R.id.nav_stat
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-/*
+
         broadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                val extras = intent?.extras
@@ -63,7 +67,7 @@ class Main3Activity : AppCompatActivity() {
         val intentFilter = IntentFilter()
         intentFilter.addAction(FirebaseMessagingService.INTENT_FILTER)
         registerReceiver(broadcastReceiver, intentFilter)
-*/
+
 
         val notificationHelper = NotificationHelper()
 

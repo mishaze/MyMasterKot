@@ -73,13 +73,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingStart="25dp">
+            android:paddingStart="20dp">
 
             <TextView
-                android:gravity="center"
+                android:maxLength="11"
+                android:maxWidth="150dp"
+                android:minWidth="130dp"
                 android:id="@+id/sch_item_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Фамилия Имя"
                 android:textColor="@android:color/black"
                 android:textSize="25sp" />
@@ -89,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="25dp">
+            android:paddingStart="20dp">
 
             <ImageButton
                 android:layout_width="match_parent"

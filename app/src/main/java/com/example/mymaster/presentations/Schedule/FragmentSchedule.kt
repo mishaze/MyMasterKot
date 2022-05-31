@@ -1,5 +1,6 @@
 package com.example.mymaster.presentations.Schedule
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.mymaster.MAIN
 import com.example.mymaster.R
 import com.example.mymaster.databinding.FragmentScheduleBinding
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
@@ -22,6 +22,7 @@ class FragmentSchedule : Fragment() {
     private var _binding: FragmentScheduleBinding? = null
     private val binding get() = _binding!!
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,7 +53,9 @@ class FragmentSchedule : Fragment() {
             items.sortWith { o1, o2 -> (o1.date + "." + o1.time).compareTo(o2.date + "." + o2.time) }
             adapter.notifyDataSetChanged()
         })
-        vm.getScheduleList()
+
+        if (vm.resultLive.value == null)
+            vm.getScheduleList()
 
         return root
     }

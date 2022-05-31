@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSignInWindow() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Войти")
-        dialog.setMessage("Введите информацию для авториции")
+        dialog.setMessage("Введите информацию для авторизации")
 
         val inflater = LayoutInflater.from(this)
         val activitySigIn = inflater.inflate(R.layout.activity_signin, null)
@@ -133,147 +133,28 @@ class MainActivity : AppCompatActivity() {
 
             auth.createUserWithEmailAndPassword(email.text.toString(), pass.text.toString())
                 .addOnSuccessListener {
-                    val userInformation = UserInformation(
-                        uid = FirebaseAuth.getInstance().currentUser!!.uid,
-                        name = name.text.toString(),
-                        surname = "Петров",
-                        phone_number = "+79507352828",
-                        specialization = "Мастер по маникюру",
-                        legal_information = "ИНН:5444564115155514",
-                        email = email.text.toString(),
-                        master_info = "Занимаюсь маникюром и все что с этим связано"
-                    )
-                    userInformation.email = email.text.toString()
-                    userInformation.name = name.text.toString()
-                    userInformation.uid = FirebaseAuth.getInstance().uid
 
-
-                    val temp1: ArrayList<DayWeek> = ArrayList()
-
-                    temp1.add(
-                        DayWeek(
-                            monday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            tuesday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            wednesday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            thursday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            friday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            sunday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            saturday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            )
-                        )
-                    )
-
-                    temp1.add(
-                        DayWeek(
-                            monday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            tuesday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            wednesday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            thursday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            friday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            sunday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            ),
-                            saturday = Day(
-                                start = "08:00",
-                                end = "23:00",
-                                start_dinner = "00:00",
-                                end_dinner = "00:00"
-                            )
-                        )
-                    )
-
-                    val scheduleSetting =
-                        ScheduleSettingModel(time = "01:50", num = 1, dayOfWeek = temp1)
-                    val servicesModel = ServicesModel(
-                        name = "Маникюр",
-                        price = "1000",
-                        timeInWork = "120",
-                        info = "Ноготочки делаю я тут вот так вот",
-                        uidServices = "",
-                        status = true
-                    )
-
+                   val newUser = NewUser(name.text.toString(),email.text.toString())
+                    newUser.createNewUser()
                     //add in DataBase
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Schedule")
-                        .setValue(scheduleSetting)
+                        .setValue(newUser.scheduleSetting)
 
                     val key = masters.child(FirebaseAuth.getInstance().currentUser!!.uid)
                         .child("Services").push().key
-                    servicesModel.uidServices = key
+                    newUser.servicesModel.uidServices = key
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Services")
-                        .child(key.toString()).setValue(servicesModel)
+                        .child(key.toString()).setValue(newUser.servicesModel)
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Information")
-                        .setValue(userInformation)
+                        .setValue(newUser.userInformation)
                         .addOnSuccessListener {
 
 
                             auth.signInWithEmailAndPassword(
-                                userInformation.email!!,
+                                newUser.userInformation.email!!,
                                 pass.text.toString()
                             )
                                 .addOnSuccessListener {

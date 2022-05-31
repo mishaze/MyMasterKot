@@ -9,7 +9,6 @@ import com.google.firebase.database.*
 
 class SharedPrefsUserServices() : ServicesStorage {
 
-    private val result = ResponseServicesList()
 
     override fun saveUserInformation(servicesList: ArrayList<ServicesModel>) {
         //mDatabase.child("Services").setValue(servicesList)
@@ -42,7 +41,7 @@ class SharedPrefsUserServices() : ServicesStorage {
     }
 
     override fun getUserInformation(callback: FirebaseCallback<ResponseServicesList>) {
-
+        val result = ResponseServicesList()
         FirebaseDatabase.getInstance()
             .getReference("Master")
             .child(

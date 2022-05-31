@@ -6,7 +6,6 @@ data class UserInformation(
     var surname: String? = "",
     var phone_number: String? = "",
     var specialization: String? = "",
-    // TODO
     var legal_information: String? = "",
     var email: String? = "",
     var master_info: String? = "",

@@ -48,7 +48,7 @@ class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
     override fun getItemCount(): Int {
         return items.size
     }
-
+/*
     private fun timeUnParse(tempstr: String): String {
         val temp = tempstr.toInt()
         var minute = 0
@@ -72,5 +72,5 @@ class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
         return "$shours:$sminute"
     }
 
-
+*/
 }

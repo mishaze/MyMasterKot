@@ -23,8 +23,7 @@ class FragmentPage(index: Int) : Fragment() {
 
     var year = cal[Calendar.YEAR]
     var monthOfYear = cal[Calendar.MONTH]
-    var dayOfMonth =cal[Calendar.DAY_OF_MONTH]
-
+    var dayOfMonth = cal[Calendar.DAY_OF_MONTH]
 
 
     private val index = index
@@ -47,8 +46,6 @@ class FragmentPage(index: Int) : Fragment() {
 
         _binding = FragmentScheduleSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
         val save = binding.btnSchSave
 
         textViews.add(binding.schFrom1)
@@ -160,7 +157,6 @@ class FragmentPage(index: Int) : Fragment() {
 
         schedule.dayOfWeek[index] = dayOfWeek
     }
-
 
 
     override fun onDestroyView() {

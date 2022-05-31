@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.example.mymaster.presentations.Schedule.FragmentSchedule"
         android:label="РАСПИСАНИЕ"
-        tools:layout="@layout/fragment_schedule" >
+        tools:layout="@layout/fragment_schedule">
         <action
             android:id="@+id/action_nav_home_to_fragmentScheduleSetting"
             app:destination="@id/fragmentScheduleSetting" />
@@ -19,7 +19,7 @@
         android:id="@+id/nav_profile"
         android:name="com.example.mymaster.presentations.MyProfile.FragmentMyProfile"
         android:label="ПРОФИЛЬ"
-        tools:layout="@layout/fragment_my_profile" >
+        tools:layout="@layout/fragment_my_profile">
         <action
             android:id="@+id/action_nav_profile_to_fragmentServicesList"
             app:destination="@id/fragmentServicesList" />
@@ -37,7 +37,7 @@
         android:id="@+id/fragmentServicesList"
         android:name="com.example.mymaster.presentations.ServicesList.FragmentServicesList"
         android:label="СПИСОК УСЛУГ"
-        tools:layout="@layout/fragment_services_list" >
+        tools:layout="@layout/fragment_services_list">
         <action
             android:id="@+id/action_fragmentServicesList_to_nav_profile"
             app:destination="@id/nav_profile" />
@@ -51,7 +51,7 @@
         android:id="@+id/fragmentScheduleSetting"
         android:name="com.example.mymaster.presentations.ScheduleSetting.FragmentScheduleSetting"
         android:label="НАСТРОЙКА РАСПИСАНИЯ"
-        tools:layout="@layout/fragment_main_schedule_setting" >
+        tools:layout="@layout/fragment_main_schedule_setting">
         <action
             android:id="@+id/action_fragmentScheduleSetting_to_nav_home"
             app:destination="@id/nav_home" />
@@ -60,7 +60,7 @@
         android:id="@+id/mapFragment"
         android:name="com.example.mymaster.presentations.Map.MapFragment"
         android:label="КАРТА"
-        tools:layout="@layout/fragment_maps" >
+        tools:layout="@layout/fragment_maps">
         <action
             android:id="@+id/action_mapFragment_to_nav_profile"
             app:destination="@id/nav_profile" />
