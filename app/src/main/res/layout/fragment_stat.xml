@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/all_services"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Всего записей"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/complete_services"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Выполнено"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="@+id/complete_services" />
     <TextView
         android:id="@+id/profit"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Прибыль за все время"
@@ -83,10 +83,10 @@
         app:layout_constraintTop_toTopOf="@+id/profit" />
     <TextView
         android:id="@+id/profit_month"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_margin="10dp"
         android:layout_height="wrap_content"
-        android:text="Прибыль за текущий месяц"
+        android:text="Прибыль месяц"
         android:textSize="20sp"
         android:textColor="@color/text_blue"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
 
     <TextView
         android:id="@+id/definitions"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Ваша оценка"

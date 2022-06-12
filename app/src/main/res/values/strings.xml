@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyMaster</string>
+    <string name="app_name">Lite service (для мастеров)</string>
     <string name="app_in_name">LITE SERVICE</string>
     <string name="name_services">Название услуги</string>
     <string name="time_services">Время</string>

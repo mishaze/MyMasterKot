@@ -4,6 +4,7 @@ import com.example.domain.Domain.models.StatModel
 import com.example.domain.Domain.models.responses.*
 import com.example.domain.Domain.repository.ScheduleRepository
 import com.example.domain.Domain.repository.UserInformationRepository
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -14,6 +15,9 @@ class GetUserStat(
     private val scheduleRepository: ScheduleRepository,
     private val userInformationRepository: UserInformationRepository
 ) {
+
+    val decimalFormat = DecimalFormat("###,###")
+
 
     val userStat = ResponseUserStat()
 
@@ -40,14 +44,14 @@ class GetUserStat(
                 response.answer.forEach {
                     result += it.price?.toInt()!!
                 }
-                userStat.answer?.allIncome = result.toString()
+                userStat.answer?.allIncome = decimalFormat.format(result)
 
                 result = 0
                 response.answer.forEach {
                     if (dateInString > it.date.toString())
                         result += 1
                 }
-                userStat.answer?.completeServices = result.toString()
+                userStat.answer?.completeServices = decimalFormat.format(result)
 
                 val datemm = "$monthInString.01"
                 result = 0
@@ -56,13 +60,13 @@ class GetUserStat(
                         result += it.price?.toInt()!!
                 }
 
-                userStat.answer?.incomeOfMonth = result.toString()
+                userStat.answer?.incomeOfMonth = decimalFormat.format(result)
 
 
                 userInformationRepository.getUserInformation(object :
                     FirebaseCallback<ResponseUserInformation> {
                     override fun onResponse(response: ResponseUserInformation) {
-                        userStat.answer?.definition = response.answer?.definition
+                        userStat.answer?.definition = "${response.answer?.definition}/10"
                         callback.onResponse(userStat)
                     }
                 })
