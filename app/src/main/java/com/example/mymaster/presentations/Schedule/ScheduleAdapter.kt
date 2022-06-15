@@ -3,12 +3,14 @@ package com.example.mymaster.presentations.Schedule
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.data.data.storage.DataBase.UserScheduleList
 import com.example.domain.Domain.models.RecordingSessionModel
 import com.example.mymaster.R
 
-class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
+class ScheduleAdapter(private val items: MutableList<RecordingSessionModel>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -24,12 +26,24 @@ class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
         holder: RecyclerView.ViewHolder,
         position: Int
     ) {
+        val shP = UserScheduleList()
         val name = holder.itemView.findViewById<TextView>(R.id.sch_item_name)
         val service = holder.itemView.findViewById<TextView>(R.id.sch_item_services)
         val timeStart =
             holder.itemView.findViewById<TextView>(R.id.sch_item_time_start)
         val date = holder.itemView.findViewById<TextView>(R.id.sch_item_date)
         val line = holder.itemView.findViewById<View>(R.id.sch_item_line)
+        val btn = holder.itemView.findViewById<ImageButton>(R.id.del_rec)
+
+        btn.setOnClickListener {
+            shP.setCancelRecord(
+                uidR = items[position].uidR.toString(),
+                uidC = items[position].uid.toString()
+            )
+            items.removeAt(position)
+            this.notifyItemRemoved(position)
+            notifyItemRangeChanged(position, 1)
+        }
 
         if (position > 0 && items[position].date == items[position - 1].date) {
             date.text = ""
@@ -39,7 +53,10 @@ class ScheduleAdapter(private val items: List<RecordingSessionModel>) :
         } else {
             date.text = items[position].date
         }
-        name.text = items[position].uid
+
+
+
+        name.text = items[position].name
         service.text = items[position].uids
         timeStart.text = items[position].time.toString()
 

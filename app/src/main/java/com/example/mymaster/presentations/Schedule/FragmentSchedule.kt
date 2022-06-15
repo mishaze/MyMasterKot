@@ -47,15 +47,19 @@ class FragmentSchedule : Fragment() {
         vm.resultLive.observe(this, {
             items.clear()
             adapter.notifyDataSetChanged()
-            it.forEach { i -> items.add(i) }
+            it.forEach { i ->
+                if (i.status == true) {
+                    items.add(i)
+                }
+            }
             //adapter.notifyItemInserted(items.size - 1)
 
             items.sortWith { o1, o2 -> (o1.date + "." + o1.time).compareTo(o2.date + "." + o2.time) }
             adapter.notifyDataSetChanged()
         })
 
-        if (vm.resultLive.value == null)
-            vm.getScheduleList()
+
+        vm.getScheduleList()
 
         return root
     }

@@ -6,5 +6,7 @@ data class RecordingSessionModel(
     var uids :String? = "",
     var uid :String? ="",
     var status: Boolean? = true,
-    var price: String? =""
+    var price: String? ="",
+    var uidR: String? = "",
+    var name: String? = ""
 )

@@ -1,12 +1,11 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.UserAuthInFireBase
-import com.example.data.data.storage.models.UserInformStorageModel
 import com.example.domain.Domain.models.UserInformation
 import com.google.firebase.auth.FirebaseAuth
 
 
-class SharedPrefUserAuthInFireBase(private var auth: FirebaseAuth) :
+class UserAuthInFireBase(private var auth: FirebaseAuth) :
     UserAuthInFireBase {
 
     override suspend fun sigInUser(email: String, password: String) {
@@ -21,7 +20,7 @@ class SharedPrefUserAuthInFireBase(private var auth: FirebaseAuth) :
         val result = auth.createUserWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 val user = UserInformation(email=email, name = name, uid = FirebaseAuth.getInstance().uid)
-                SharedPrefUserInformationStorage().saveUserInformation(user)
+                UserInformationStorage().saveUserInformation(user)
             }.addOnFailureListener { e -> }
 
 

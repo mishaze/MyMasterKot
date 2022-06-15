@@ -38,6 +38,7 @@ class FragmentMyProfile : Fragment() {
         val services = binding.mpBtnServices
         val save = binding.mpBtnSave
         val specialization = binding.mpSpec
+        var uid = ""
 
         btnMap.setOnClickListener {
             MAIN.navController.navigate(R.id.action_nav_profile_to_mapFragment)
@@ -51,6 +52,7 @@ class FragmentMyProfile : Fragment() {
             info.setText(it?.master_info)
             address.setText(it?.address)
             specialization.setText(it?.specialization)
+            uid = it?.uid.toString()
         })
 
         vm.load()
@@ -61,7 +63,6 @@ class FragmentMyProfile : Fragment() {
 
         save.setOnClickListener {
             vm.save(
-
                 UserInformation(
                     name = firstName.text.toString(),
                     surname = secondName.text.toString(),
@@ -70,11 +71,11 @@ class FragmentMyProfile : Fragment() {
                     legal_information = "",
                     email = email.text.toString(),
                     master_info = info.text.toString(),
-                    address = address.text.toString()
+                    address = address.text.toString(),
+                    uid = uid
                 )
             )
         }
-
 
         return root
     }

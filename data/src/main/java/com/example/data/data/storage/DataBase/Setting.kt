@@ -1,4 +1,4 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.SettingStorage
 import com.example.domain.Domain.models.SettingModel
@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 
-class SharedPrefsSetting : SettingStorage {
+class Setting : SettingStorage {
 
     override fun setSetting(setting: SettingModel) {
 

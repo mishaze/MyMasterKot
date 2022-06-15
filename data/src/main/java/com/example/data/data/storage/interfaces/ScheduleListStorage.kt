@@ -6,4 +6,5 @@ import com.example.domain.Domain.models.responses.ResponseScheduleList
 interface ScheduleListStorage {
 
     fun getScheduleList(callback: FirebaseCallback<ResponseScheduleList>)
+    fun setCancelRecord(uidC: String, uidR: String)
 }

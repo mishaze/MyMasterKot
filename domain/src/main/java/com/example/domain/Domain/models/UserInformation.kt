@@ -10,5 +10,5 @@ data class UserInformation(
     var email: String? = "",
     var master_info: String? = "",
     var address: String? = "",
-    var definition: String? = ""
+    var definition: String? = "0"
 )

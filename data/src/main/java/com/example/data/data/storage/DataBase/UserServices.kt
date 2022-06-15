@@ -1,4 +1,4 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.ServicesStorage
 import com.example.domain.Domain.models.ServicesModel
@@ -7,7 +7,7 @@ import com.example.domain.Domain.models.responses.ResponseServicesList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class SharedPrefsUserServices() : ServicesStorage {
+class UserServices() : ServicesStorage {
 
 
     override fun saveUserInformation(servicesList: ArrayList<ServicesModel>) {

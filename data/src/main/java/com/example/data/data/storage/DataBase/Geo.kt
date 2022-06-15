@@ -1,9 +1,9 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-class SharedPrefsGeo {
+class Geo {
     fun setGeo(geo :String) {
 
         FirebaseDatabase.getInstance()

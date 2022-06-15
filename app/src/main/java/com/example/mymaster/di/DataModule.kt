@@ -1,8 +1,9 @@
 package com.example.mymaster.di
 
 import com.example.data.data.repository.*
-import com.example.data.data.storage.SharedPrefs.*
+import com.example.data.data.storage.DataBase.*
 import com.example.data.data.storage.interfaces.*
+import com.example.data.data.storage.interfaces.UserInformationStorage
 import com.example.domain.Domain.repository.*
 import org.koin.dsl.module
 
@@ -11,7 +12,7 @@ val dataModUle = module {
 
     //MyProfile
     factory <UserInformationStorage> {
-        SharedPrefUserInformationStorage()
+        com.example.data.data.storage.DataBase.UserInformationStorage()
     }
 
     factory<UserInformationRepository> {
@@ -20,7 +21,7 @@ val dataModUle = module {
 
     //AddInFriend and FriendList
     factory<FriendStorage> {
-        SharedPrefUserFriend()
+        UserFriend()
     }
 
     factory<FriendRepository> {
@@ -29,7 +30,7 @@ val dataModUle = module {
 
     //ServicesList
     factory<ServicesStorage> {
-        SharedPrefsUserServices()
+        UserServices()
     }
 
     factory<ServicesRepository> {
@@ -37,7 +38,7 @@ val dataModUle = module {
     }
     //Schedule
     factory<ScheduleListStorage> {
-        SharedPrefsUserScheduleList()
+        UserScheduleList()
     }
 
     factory<ScheduleRepository> {
@@ -46,7 +47,7 @@ val dataModUle = module {
     //ScheduleSetting
 
     factory<ScheduleSettingStorage> {
-        SharedPrefsScheduleSettingList()
+        ScheduleSettingList()
     }
 
     factory<ScheduleSettingRepository> {
@@ -55,7 +56,7 @@ val dataModUle = module {
 
     //Setting
     factory<SettingStorage> {
-        SharedPrefsSetting()
+        Setting()
     }
 
     factory<SettingRepository> {

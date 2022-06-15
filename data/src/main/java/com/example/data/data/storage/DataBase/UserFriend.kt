@@ -1,4 +1,4 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.FriendStorage
 import com.example.domain.Domain.models.ClientInform
@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*
 
-class SharedPrefUserFriend : FriendStorage {
+class UserFriend : FriendStorage {
 
     override fun addInMasterFriend(email: String) {
 

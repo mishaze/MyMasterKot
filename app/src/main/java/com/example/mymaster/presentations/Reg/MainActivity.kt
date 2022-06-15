@@ -129,14 +129,22 @@ class MainActivity : AppCompatActivity() {
 
             //registration users
 
-            //vm.regWithEmail(email.text.toString(), pass.text.toString(),name.text.toString())
-
             auth.createUserWithEmailAndPassword(email.text.toString(), pass.text.toString())
                 .addOnSuccessListener {
 
                    val newUser = NewUser(name.text.toString(),email.text.toString())
                     newUser.createNewUser()
                     //add in DataBase
+
+                    val emailTemp = email.text.toString()
+
+                    FirebaseDatabase.getInstance()
+                        .getReference("Search")
+                        .child("identificator")
+                        .child(email.text.toString().replace(".","*",true))
+                        .setValue(
+                            FirebaseAuth.getInstance()
+                                .currentUser?.uid.toString())
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Schedule")
                         .setValue(newUser.scheduleSetting)
@@ -147,6 +155,7 @@ class MainActivity : AppCompatActivity() {
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Services")
                         .child(key.toString()).setValue(newUser.servicesModel)
+
 
                     masters.child(FirebaseAuth.getInstance().currentUser!!.uid).child("Information")
                         .setValue(newUser.userInformation)

@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.data.data.storage.SharedPrefs.SharedPrefsGeo
+import com.example.data.data.storage.DataBase.Geo
 import com.example.mymaster.MAIN
 import com.example.mymaster.R
 import com.example.mymaster.databinding.FragmentMapsBinding
@@ -70,7 +70,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             try {
                 val adress_list = geocoder.getFromLocation(location.latitude, location.longitude, 1)
                 if (adress_list.size > 0) {
-                    val geo = SharedPrefsGeo()
+                    val geo = Geo()
                     geo.setAddress(adress_list[0].getAddressLine(0).toString())
                     geo.setGeo("${location.latitude}:${location.longitude}")
 
@@ -144,7 +144,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             if (addressList.size > 0) {
                 if (addressList[0].thoroughfare != null) {
                     address = addressList[0].getAddressLine(0).toString()
-                    val geo = SharedPrefsGeo()
+                    val geo = Geo()
 
                     geo.setAddress(address)
                     geo.setGeo("${p0.latitude}:${p0.longitude}")

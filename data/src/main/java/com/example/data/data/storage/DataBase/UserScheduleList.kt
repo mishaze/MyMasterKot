@@ -1,4 +1,4 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.ScheduleListStorage
 import com.example.domain.Domain.models.RecordingSessionModel
@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class SharedPrefsUserScheduleList() : ScheduleListStorage {
+class UserScheduleList() : ScheduleListStorage {
     override fun getScheduleList(callback: FirebaseCallback<ResponseScheduleList>) {
 
         val mrDatabase: DatabaseReference =
@@ -27,7 +27,7 @@ class SharedPrefsUserScheduleList() : ScheduleListStorage {
                 for (ds in snapshot.children) {
 
                     val temp = ds.getValue(RecordingSessionModel::class.java)
-
+                    temp?.uidR = ds.key
 
                     cDatabase.child(temp?.uid.toString()).child("name").get()
 
@@ -36,7 +36,7 @@ class SharedPrefsUserScheduleList() : ScheduleListStorage {
                                 val result = task.result
                                 result?.let {
                                     val cl = result.getValue(String::class.java)
-                                    temp?.uid = cl
+                                    temp?.name = cl
 
                                     mDatabase.child(temp?.uids.toString()).get()
                                         .addOnCompleteListener { task ->
@@ -46,9 +46,10 @@ class SharedPrefsUserScheduleList() : ScheduleListStorage {
                                                     val sr =
                                                         result.getValue(ServicesModel::class.java)
                                                     temp?.uids = sr?.name
-
                                                     temp?.price = sr?.price
+
                                                     response.answer.add(temp!!)
+
                                                 }
                                             } else {
                                                 response.exception = task.exception
@@ -68,4 +69,24 @@ class SharedPrefsUserScheduleList() : ScheduleListStorage {
             override fun onCancelled(error: DatabaseError) {}
         })
     }
+
+    override fun setCancelRecord(uidC: String, uidR: String){
+
+        FirebaseDatabase.getInstance()
+            .getReference("ClientRecords")
+            .child(uidC)
+            .child(uidR)
+            .child("status")
+            .setValue(false)
+
+        FirebaseDatabase.getInstance()
+            .getReference("MasterRecords")
+            .child(
+                FirebaseAuth.getInstance()
+                .currentUser?.uid.toString())
+            .child(uidR)
+            .child("status")
+            .setValue(false)
+
+   }
 }

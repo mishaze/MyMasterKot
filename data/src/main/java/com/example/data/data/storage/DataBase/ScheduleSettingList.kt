@@ -1,4 +1,4 @@
-package com.example.data.data.storage.SharedPrefs
+package com.example.data.data.storage.DataBase
 
 import com.example.data.data.storage.interfaces.ScheduleSettingStorage
 import com.example.domain.Domain.models.ScheduleSettingModel
@@ -7,7 +7,7 @@ import com.example.domain.Domain.models.responses.ResponseScheduleSettingList
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class SharedPrefsScheduleSettingList():ScheduleSettingStorage{
+class ScheduleSettingList():ScheduleSettingStorage{
 
     override fun saveScheduleSettingList(scheduleSettingList: ScheduleSettingModel) {
         FirebaseDatabase.getInstance()
